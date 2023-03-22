@@ -24,7 +24,7 @@ def if_possible_zero(lesson1, lesson2, possible_zero): #dicts
     l1 = list(lesson1.values())
     l2 = list(lesson2.values())
     pz = list(possible_zero.values())
-    print(l1, "\n", l2, "\n", pz, "\n" ) #TODO get rid of this line later 
+    #print(l1, "\n", l2, "\n", pz, "\n" ) #TODO get rid of this line later 
     for (el1, el2, el3_pz) in zip(l1, l2, pz):
         if (el1 == el2 & el1 != el3_pz):
             counter = counter + 1
@@ -48,7 +48,7 @@ def same_variant_position(lesson1, lesson2):
 
 def zeros_list(triplets, variants_df):
     variants_amount = len(variants_df.columns) 
-    print(variants_amount)
+    #print(variants_amount)
     zeros = []
     variants_dict = variants_df.to_dict('index')
     for el in triplets:
@@ -58,7 +58,7 @@ def zeros_list(triplets, variants_df):
         l1 = variants_dict.get(lesson1)
         l2 = variants_dict.get(lesson2)
         p_z = variants_dict.get(possible_zero)
-        print(el)
+        #print(el)
         if (same_variant_position(l1, l2) == True & if_possible_zero(l1, l2, p_z) == True):
                 zeros.append(el)
     return zeros

@@ -12,7 +12,9 @@ def adjacent_lessons(zeros): #list of tuples (characteristic_zeros)
 def fill_in(adjacency_matrix_df, zeros):
     for el in zeros:
         adjacency_matrix_df.loc[el[0], el[1]] = 1
-        adjacency_matrix_df.loc[el[1], el[0]] = 1  
+        adjacency_matrix_df.loc[el[1], el[0]] = 1 
         adjacency_matrix_df.loc[el[1], el[2]] = 1
-        adjacency_matrix_df.loc[el[2], el[1]] = 1
+        adjacency_matrix_df.loc[el[2], el[1]] = 1 
     return adjacency_matrix_df
+
+

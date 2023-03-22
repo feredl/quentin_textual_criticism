@@ -1,6 +1,7 @@
 import input_processing as inp
 import characteristic_zero as ch_zero
 import adjacency_matrix
+import reduced_matrix
 import itertools
 from itertools import combinations, permutations
 import numpy as np
@@ -19,9 +20,10 @@ zeros = ch_zero.zeros_list(possible_intermediates, variants_df)
 print("CHARACTERISTIC ZEROS:", zeros)
 
 adj_m = adjacency_matrix.adjacent_lessons(zeros)
-print("ADJACENCY_MATRIX:", "\n", adj_m)
+print("ADJACENCY MATRIX:", "\n", adj_m)
 
-
+red_m = reduced_matrix.reduction(adj_m, zeros)
+print("REDUCED MATRIX:", "\n", red_m)
 
 
 
