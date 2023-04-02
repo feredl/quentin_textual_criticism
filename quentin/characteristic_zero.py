@@ -46,7 +46,7 @@ def same_variant_position(lesson1, lesson2):
         return False 
 
 
-def zeros_list(triplets, variants_df):
+def find(triplets, variants_df):
     variants_amount = len(variants_df.columns) 
     #print(variants_amount)
     zeros = []
