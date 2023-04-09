@@ -1,5 +1,6 @@
 import pandas as pd
-import re
+import ipywidgets as widgets
+from IPython.display import display
 
 #TODO REAL DATA PROCESSING & GENERATION
 
@@ -12,6 +13,16 @@ def getVariantData():
 def getExcelName():
     excel_name = input("Please enter the name of the excel file: ")
     return excel_name
+
+#def getExcelName():
+#    text = widgets.Textarea(
+#   value = input(),
+#    placeholder='"example.xlsx"',
+#    description='Filename:',
+#    disabled=False
+#    )
+#    display(text)
+#    return text.value
 
 
 

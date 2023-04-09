@@ -16,29 +16,30 @@ def triplets_permutations(lessons_triplets):
             triplets.append(j) 
     return triplets 
 
-def to_dictionary(variants_df):
-    return variants_df.to_dict('index')
-
-def if_possible_zero(lesson1, lesson2, possible_zero): #dicts 
+def if_possible_zero(lesson1, lesson2, possible_zero, answer): #dicts 
     counter = 0
     l1 = list(lesson1.values())
     l2 = list(lesson2.values())
     pz = list(possible_zero.values())
-    #print(l1, "\n", l2, "\n", pz, "\n" ) #TODO get rid of this line later 
-    for (el1, el2, el3_pz) in zip(l1, l2, pz):
-        if (el1 == el2 & el1 != el3_pz):
-            counter = counter + 1
-    if (counter > 0):
-        return False 
-    else:
-        return True
+    triplet_values = list(zip(l1, l2, pz))
+    if (answer == "y"):
+        for el in triplet_values:
+            if (el[0] == el[1] and el[0] != el[2] and el[2] != 0 and el[1] != 0):
+                return False
+    if (answer == "n"):
+        for el in triplet_values:
+            if (el[0] == el[1] and el[0] != el[2]):
+                return False
+    return True
+  
 
 def same_variant_position(lesson1, lesson2):
     counter = 0
     l1 = list(lesson1.values())
     l2 = list(lesson2.values())
-    for (el1, el2) in zip(l1, l2):
-        if(el1 == el2):
+    var_tuple = list(zip(l1, l2))
+    for el in var_tuple:
+        if(el[0] == el[1]):
             counter = counter + 1
     if (counter > 0):
         return True
@@ -47,8 +48,8 @@ def same_variant_position(lesson1, lesson2):
 
 
 def find(triplets, variants_df):
+    answer = input("Should the program skip columns with zeros in it? y/n > ")
     variants_amount = len(variants_df.columns) 
-    #print(variants_amount)
     zeros = []
     variants_dict = variants_df.to_dict('index')
     for el in triplets:
@@ -59,10 +60,11 @@ def find(triplets, variants_df):
         l2 = variants_dict.get(lesson2)
         p_z = variants_dict.get(possible_zero)
         #print(el)
-        if (same_variant_position(l1, l2) == True & if_possible_zero(l1, l2, p_z) == True):
+        #print(if_possible_zero(l1, l2, p_z))
+        if (same_variant_position(l1, l2) == True and if_possible_zero(l1, l2, p_z, answer) == True):
                 zeros.append(el)
+                #print(zeros)
+                #print(el)
+                
+
     return zeros
-
-
-
-
